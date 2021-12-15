@@ -8,8 +8,6 @@ const app = express();
 const path = require("path")
 const authRouter = require("./controllers/auth-router");
 const cookieParser = require('cookie-parser');
-const { requireAuth } = require("./middleware/authMiddleware");
-// const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 const PORT = process.env.PORT ?? 8000;
 
 // =======================================

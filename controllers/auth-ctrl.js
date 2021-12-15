@@ -6,12 +6,6 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 // for comparing password
 const bcrypt = require("bcrypt");
-// token for JWT
-const createToken = (id) => {
-  return jwt.sign({ id }, process.env.SECRET, {
-    expiresIn: process.env.JWT_maxAge,
-  });
-};
 
 // Create all Auth operations
 // status errors refer: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
@@ -54,17 +48,13 @@ const createUser = async (req, res) => {
       req.body.role = "User";
       const user = new User(req.body);
       await user.save();
-      // create JWT
-      const token = createToken(user._id);
-      
+
       // somehow, if the new user doesn't exist, return error
       if (!user) {
         return res.status(400).json({ success: false, error: err });
       }
-      
+
       // success!
-      // send back cookie with JWT too
-      res.cookie('jwt', token, { httpOnly: true, maxAge: process.env.maxAge, secure: true});
       res.status(201).json({
         success: true,
         user: user._id,
@@ -95,7 +85,6 @@ const deleteUser = async (req, res) => {
   }
 };
 
-
 // For logging in
 const loginUser = async (req, res) => {
   // if there is no req.body, return error
@@ -114,17 +103,28 @@ const loginUser = async (req, res) => {
     }
     // user exists. Check if passwords match.
     if (bcrypt.compareSync(req.body.password, user.password)) {
-
       // success!
-      const token = createToken(user._id);
-      res.cookie('jwt', token, { httpOnly: true, maxAge: process.env.maxAge, secure: true});
+      const token = jwt.sign(
+        { name: user.name, username: user.username, role: user.role },
+        process.env.SECRET,
+        {
+          expiresIn: process.env.JWT_maxAge,
+        }
+      );
+      res.cookie("jwt", token, {
+        httpOnly: true,
+        maxAge: process.env.maxAge,
+        secure: true,
+      });
       res.status(201).json({
         success: true,
         role: user.role,
         username: user.username,
         name: user.name,
+        token: token,
         message: "Login success!",
       });
+
     } else {
       // wrong login information
       res.status(401).json({ success: false, error: err });
@@ -140,7 +140,7 @@ const loginUser = async (req, res) => {
 // for logging out
 const logout = async (req, res) => {
   try {
-    res.cookie('jwt', '', { httpOnly: true, maxAge: 1, secure: true});
+    res.cookie("jwt", "", { httpOnly: true, maxAge: 1, secure: true });
     // success!
     res.status(201).json({
       success: true,
@@ -150,7 +150,6 @@ const logout = async (req, res) => {
     res.status(400).json({ success: false, error: err });
   }
 };
-
 
 // export the modules - CRUD
 // Read has 2 (for the index page--> showing all sessions, and for the show page--> show particular session)

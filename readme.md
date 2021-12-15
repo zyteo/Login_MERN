@@ -14,7 +14,7 @@ Technologies used to build this project.
 ```
 - MongoDB
 - Express
-- ReactJS
+- ReactJS + React router
 - NodeJS
 - Styled components
 - bcrypt
@@ -47,10 +47,7 @@ Models:
 
 RESTful APIs
 - Post (create user)
-- Get (create user)
 - Post (login)
-- Get (login)
-- Post (logout)
 - Get (logout)
 
 Pages needed:
@@ -70,6 +67,7 @@ Decided to try out a login application with MERN first before moving on to Java.
 Set up backend models, controllers, routes.
 Set up frontend, add various states.
 Experiment around with JWT + localisation.
+Got the set up done.
 
 ```
 ---
