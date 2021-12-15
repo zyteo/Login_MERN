@@ -86,11 +86,13 @@ const Button = styled.button`
   }
   `;
 
-function NavBar({ auth, handleLogOut, userName }) {
+function NavBar({ setLanguage, language, auth, handleLogOut, userName }) {
+  const handleLanguage = (event) => {
+    setLanguage(event.target.value);
+  }
   return (
     <>
       <Navbar>
-       
         {auth === "NoAuth" ? (
           <>
             <LinkStyled to="/signup" className="signup">
@@ -104,10 +106,17 @@ function NavBar({ auth, handleLogOut, userName }) {
           <>
             <p> Hello {userName}!</p>
             <LinkStyled to="/" className="logout">
-              <Button primary onClick={handleLogOut}>Logout</Button>
+              <Button primary onClick={handleLogOut}>
+                Logout
+              </Button>
             </LinkStyled>
           </>
         )}
+        <select onClick={(event) => handleLanguage(event)}>
+          <option>en</option>
+          <option>简体中文</option>
+          <option>繁体中文</option>
+        </select>
       </Navbar>
     </>
   );

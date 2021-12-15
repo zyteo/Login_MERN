@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { text } from "../localisation/text";
 
-function SignUp() {
+function SignUp({language}) {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
 
@@ -15,11 +16,13 @@ function SignUp() {
       })
       .catch((err) => {
         if (err.response.data.message === "username exists") {
-          alert(`Sorry, username is already taken!`);
+            language === "en" ? alert(text.en.signupUserTaken) : language === "简体中文" ? alert(text.simplifiedCN.signupUserTaken) : alert(text.traditionaldCN.signupUserTaken)
+            
         } else if (err.response.data.message === "name exists") {
-          alert(`Sorry, name is already taken!`);
+            language === "en" ? alert(text.en.signupNameTaken) : language === "简体中文" ? alert(text.simplifiedCN.signupNameTaken) : alert(text.traditionaldCN.signupNameTaken)
         } else {
-          alert(`Sorry, there was an error somehow. Try again?`);
+            alert(`Sorry, there was an error somehow. Try again?`);
+            language === "en" ? alert(text.en.signupError) : language === "简体中文" ? alert(text.simplifiedCN.signupError) : alert(text.traditionaldCN.signupError)
         }
       });
   };
