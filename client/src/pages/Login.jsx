@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { text } from "../localisation/text";
 function Login({ setAuth, setRole, setUsername, language }) {
   const [login, setLogin] = useState({});
   const navigate = useNavigate();
@@ -41,9 +41,9 @@ function Login({ setAuth, setRole, setUsername, language }) {
 
   return (
     <>
-      <h1>Login</h1>
+      <h1>{text[language].login}</h1>
       <form onSubmit={handleSubmit}>
-            <label>Username:</label>
+            <label>{text[language].username}</label>
             <input
               type="text"
               name="username"
@@ -51,7 +51,7 @@ function Login({ setAuth, setRole, setUsername, language }) {
               onChange={handleUsernameChange}
               required
               ></input><br/>
-              <label>Password:</label>
+              <label>{text[language].password}</label>
             <input
               type="password"
               name="password"
@@ -60,7 +60,7 @@ function Login({ setAuth, setRole, setUsername, language }) {
               required
             ></input><br/>
               
-        <button onClick={handleSubmit}>Login</button>
+        <button onClick={handleSubmit}>{text[language].login}</button>
       </form>
     </>
   );
