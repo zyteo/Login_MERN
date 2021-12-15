@@ -10,8 +10,8 @@ const AuthCtrl = require("./auth-ctrl");
 // =======================================
 //              GET ROUTES
 // =======================================
-// This is for login page
-// router.get("/login", AuthCtrl.loginGet);
+// This is for logout
+router.get("/logout", AuthCtrl.logout);
 
 // =======================================
 //              POST ROUTES

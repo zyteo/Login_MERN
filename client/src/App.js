@@ -16,13 +16,13 @@ function App() {
   
   const navigate = useNavigate();
   // handle function for logging out, passed as props to navbar
-  const handleLogOut = async (event) => {
-    await axios.delete(`/api/login`);
+  const handleLogOut = async () => {
+    await axios.get(`/api/logout`);
     setAuth("NoAuth");
-    setRole("Guest");
+    setRole("User");
     setUsername("");
     navigate(`/`);
-  };
+  }
 
   return (
     <div className="App">

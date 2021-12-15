@@ -95,21 +95,8 @@ const deleteUser = async (req, res) => {
   }
 };
 
-// For authentication
-const getSession = async (req, res) => {
-  const sessionUser = await req.session.currentUser;
-  try {
-    if (sessionUser) {
-      res
-        .status(200)
-        .json({ success: true, message: "Authenticated!", data: sessionUser });
-      }
-    } catch (err) {
-    res.status(401).json({ success: false, error: err });
-  }
-};
 
-// For creating new session
+// For logging in
 const loginUser = async (req, res) => {
   // if there is no req.body, return error
   if (!req.body) {
@@ -150,10 +137,10 @@ const loginUser = async (req, res) => {
   }
 };
 
-// For deleting session
-const deleteSession = async (req, res) => {
+// for logging out
+const logout = async (req, res) => {
   try {
-    await req.session.destroy();
+    res.cookie('jwt', '', { httpOnly: true, maxAge: 1, secure: true});
     // success!
     res.status(201).json({
       success: true,
@@ -170,7 +157,6 @@ const deleteSession = async (req, res) => {
 module.exports = {
   createUser,
   deleteUser,
-  getSession,
   loginUser,
-  deleteSession,
+  logout,
 };

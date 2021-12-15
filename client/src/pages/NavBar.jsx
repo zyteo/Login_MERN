@@ -90,7 +90,8 @@ const Button = styled.button`
 function NavBar({ setLanguage, language, auth, handleLogOut, userName }) {
   const handleLanguage = (event) => {
     setLanguage(event.target.value);
-  }
+  };
+
   return (
     <>
       <Navbar>
@@ -105,10 +106,13 @@ function NavBar({ setLanguage, language, auth, handleLogOut, userName }) {
           </>
         ) : (
           <>
-            <p> {text[language].greet} {userName}!</p>
+            <p>
+              {" "}
+              {text[language].greet} {userName}!
+            </p>
             <LinkStyled to="/" className="logout">
-              <Button primary onClick={handleLogOut}>
-              {text[language].logout}
+              <Button primary onClick={() => handleLogOut()}>
+                {text[language].logout}
               </Button>
             </LinkStyled>
           </>
