@@ -39,6 +39,7 @@ Models:
 
 RESTful APIs
 - Post (create user)
+- Get (create user)
 - Post (login)
 - Get (login)
 - Post (logout)
@@ -58,6 +59,7 @@ Timeline
 Decided to try out a login application with MERN first before moving on to Java.
 
 - 15 Dec: Plan out the application.
+Set up backend models, controllers, routes.
 
 ```
 ---
