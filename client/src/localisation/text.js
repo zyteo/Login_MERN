@@ -1,5 +1,5 @@
 export const text = {
-  en: {
+  English: {
     welcome: "Welcome!",
     signupUserTaken: "Sorry, username is already taken!",
     signupNameTaken: "Sorry, name is already taken!",
@@ -18,7 +18,7 @@ export const text = {
     greet: "Hello",
   },
   
-  simplifiedCN: {
+  简体中文: {
     welcome: "欢迎！",
     signupUserTaken: "不好意思，用户名已被占用！",
     signupNameTaken: "不好意思， 名字已被占用！",
@@ -36,7 +36,7 @@ export const text = {
     logout: "注销",
     greet: "你好",
   },
-  traditionaldCN: {
+  繁体中文: {
     welcome: "歡迎！",
     signupUserTaken: "不好意思，用戶名已被佔用！",
     signupNameTaken: "不好意思， 名字已被佔用！ ",

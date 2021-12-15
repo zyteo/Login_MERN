@@ -12,7 +12,7 @@ function App() {
   const [auth, setAuth] = useState("NoAuth");
   const [role, setRole] = useState("User");
   const [userName, setUsername] = useState("");
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState("English");
   
   const navigate = useNavigate();
   // handle function for logging out, passed as props to navbar

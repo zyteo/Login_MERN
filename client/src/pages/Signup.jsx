@@ -59,9 +59,9 @@ function SignUp({language}) {
 
   return (
     <>
-      <h1>{language === "English" ? text.en.signupNewUser : language === "简体中文" ? text.simplifiedCN.signupNewUser : text.traditionaldCN.signupNewUser}</h1>
+      <h1>{text[language].signupNewUser}</h1>
       <form onSubmit={handleSubmit}>
-            <label>{language === "English" ? text.en.name : language === "简体中文" ? text.simplifiedCN.name : text.traditionaldCN.name}</label>
+            <label>{text[language].name}</label>
             <input
               type="text"
               name="name"
@@ -69,7 +69,7 @@ function SignUp({language}) {
               onChange={handleNameChange}
               required
               ></input>
-              <label>{language === "English" ? text.en.username : language === "简体中文" ? text.simplifiedCN.username : text.traditionaldCN.username}</label>
+              <label>{text[language].username}</label>
             <input
               type="text"
               name="username"
@@ -77,7 +77,7 @@ function SignUp({language}) {
               onChange={handleUsernameChange}
               required
               ></input>
-              <label>{language === "English" ? text.en.password : language === "简体中文" ? text.simplifiedCN.password : text.traditionaldCN.password}</label>
+              <label>{text[language].password}</label>
             <input
               type="password"
               name="password"
@@ -85,7 +85,7 @@ function SignUp({language}) {
               onChange={handlePasswordChange}
               required
             ></input>
-              <label>{language === "English" ? text.en.confirmPassword : language === "简体中文" ? text.simplifiedCN.confirmPassword : text.traditionaldCN.confirmPassword}</label>
+              <label>{text[language].confirmPassword}</label>
             <input
               type="password"
               name="confirm.password"
@@ -93,7 +93,7 @@ function SignUp({language}) {
               onChange={handleConfirmPasswordChange}
               required
             ></input>
-        <button>{language === "English" ? text.en.signupCreate : language === "简体中文" ? text.simplifiedCN.signupCreate : text.traditionaldCN.signupCreate}</button>
+        <button>{text[language].signupCreate}</button>
       </form>
     </>
   );

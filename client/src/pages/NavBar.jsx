@@ -97,18 +97,18 @@ function NavBar({ setLanguage, language, auth, handleLogOut, userName }) {
         {auth === "NoAuth" ? (
           <>
             <LinkStyled to="/signup" className="signup">
-              <Li>{language === "English" ? text.en.signup : language === "简体中文" ? text.simplifiedCN.signup : text.traditionaldCN.signup}</Li>
+              <Li>{text[language].signup}</Li>
             </LinkStyled>
             <LinkStyled to="/" className="login">
-              <Button primary>{language === "English" ? text.en.login : language === "简体中文" ? text.simplifiedCN.login : text.traditionaldCN.login}</Button>
+              <Button primary>{text[language].login}</Button>
             </LinkStyled>
           </>
         ) : (
           <>
-            <p> {language === "English" ? text.en.greet : language === "简体中文" ? text.simplifiedCN.greet : text.traditionaldCN.greet} {userName}!</p>
+            <p> {text[language].greet}{userName}!</p>
             <LinkStyled to="/" className="logout">
               <Button primary onClick={handleLogOut}>
-              {language === "English" ? text.en.logout : language === "简体中文" ? text.simplifiedCN.logout : text.traditionaldCN.logout}
+              {text[language].logout}
               </Button>
             </LinkStyled>
           </>

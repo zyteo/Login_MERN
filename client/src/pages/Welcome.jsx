@@ -8,7 +8,7 @@ function Welcome({ language }) {
 
   return (
     <>
-      <h1>{language === "English" ? text.en.welcome : language === "简体中文" ? text.simplifiedCN.welcome : text.traditionaldCN.welcome}</h1>
+      <h1>{text[language].welcome}</h1>
     </>
   );
 }
