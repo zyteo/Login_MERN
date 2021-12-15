@@ -11,8 +11,8 @@ function SignUp({language}) {
     await axios
       .post(`/api/signup`, user)
       .then((res) => {
-        alert(`New user ${user.username} created successfully!`);
-        // navigate("/login");
+        alert(text[language].signupSuccess);
+        navigate("/");
       })
       .catch((err) => {
         if (err.response.data.message === "username exists") {
