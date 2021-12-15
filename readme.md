@@ -5,6 +5,8 @@ Coding challenge - making a login application.
 I see this as a chance to practice my full stack development skills, and at the same time try out JSON Web Tokens (JWT) as I did not have the chance to do so.
 At the same time, I would implement localisation and support multiple languages. This is also my first time trying out localisation.
 
+Visit the app here: https://login-mern-jwt.herokuapp.com/
+
 ### Technology Used
 
 Technologies used to build this project.
