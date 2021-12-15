@@ -5,6 +5,7 @@ require("dotenv").config()
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const path = require("path")
 const authRouter = require("./controllers/auth-router");
 const cookieParser = require('cookie-parser');
 const { requireAuth } = require("./middleware/authMiddleware");
@@ -14,7 +15,7 @@ const PORT = process.env.PORT ?? 8000;
 // =======================================
 //              MIDDLEWARE
 // =======================================
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, "client", "build")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api", authRouter);
@@ -33,6 +34,9 @@ mongoose.connection.on("error", (err) =>
   console.log(err.message + "Mongod not running")
 );
 
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 // =======================================
 //              LISTENER
 // =======================================
