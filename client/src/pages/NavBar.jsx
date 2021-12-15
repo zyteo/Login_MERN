@@ -107,7 +107,7 @@ function NavBar({ setLanguage, language, auth, handleLogOut, userName }) {
         ) : (
           <>
             <p>
-              {text[language].greet} {userName}!
+              {text[language].greet} {userName}{language === "日本語" ? "さん" : <></>}!
             </p>
             <LinkStyled to="/" className="logout">
               <Button primary onClick={() => handleLogOut()}>

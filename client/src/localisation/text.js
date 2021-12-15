@@ -73,7 +73,7 @@ export const text = {
     signupError: "申し訳ありませんが、エラーが発生しました。もう一度やり直してください。",
     signupShortPW: "パスワードは6文字以上にしてください。",
     signupUnmatchedPW: "パスワードが一致していません。",
-    signupNewUser: "新しいユーザーを作成する。",
+    signupNewUser: "新しいユーザーを作成する",
     signupSuccess: "新しいユーザーが作成しました。",
     name: "名前:",
     username: "ユーザー名:",
