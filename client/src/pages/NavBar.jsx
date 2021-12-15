@@ -113,7 +113,7 @@ function NavBar({ setLanguage, language, auth, handleLogOut, userName }) {
           </>
         )}
         <select onClick={(event) => handleLanguage(event)}>
-          <option>en</option>
+          <option>English</option>
           <option>简体中文</option>
           <option>繁体中文</option>
         </select>

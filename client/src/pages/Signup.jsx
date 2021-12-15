@@ -16,16 +16,15 @@ function SignUp({language}) {
       })
       .catch((err) => {
         if (err.response.data.message === "username exists") {
-            language === "en" ? alert(text.en.signupUserTaken) : language === "简体中文" ? alert(text.simplifiedCN.signupUserTaken) : alert(text.traditionaldCN.signupUserTaken)
+            language === "English" ? alert(text.en.signupUserTaken) : language === "简体中文" ? alert(text.simplifiedCN.signupUserTaken) : alert(text.traditionaldCN.signupUserTaken)
             
         } else if (err.response.data.message === "name exists") {
-            language === "en" ? alert(text.en.signupNameTaken) : language === "简体中文" ? alert(text.simplifiedCN.signupNameTaken) : alert(text.traditionaldCN.signupNameTaken)
+            language === "English" ? alert(text.en.signupNameTaken) : language === "简体中文" ? alert(text.simplifiedCN.signupNameTaken) : alert(text.traditionaldCN.signupNameTaken)
         } else {
-            alert(`Sorry, there was an error somehow. Try again?`);
-            language === "en" ? alert(text.en.signupError) : language === "简体中文" ? alert(text.simplifiedCN.signupError) : alert(text.traditionaldCN.signupError)
+            language === "English" ? alert(text.en.signupError) : language === "简体中文" ? alert(text.simplifiedCN.signupError) : alert(text.traditionaldCN.signupError)
         }
-      });
-  };
+    });
+};
 
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -50,9 +49,9 @@ function SignUp({language}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user.password.length < 6) {
-      alert("Password must be at least 6 characters long!");
+        language === "English" ? alert(text.en.signupShortPW) : language === "简体中文" ? alert(text.simplifiedCN.signupShortPW) : alert(text.traditionaldCN.signupShortPW)
     } else if (user.confirmPassword !== user.password) {
-      alert("Passwords do not match!");
+        language === "English" ? alert(text.en.signupUnmatchedPW) : language === "简体中文" ? alert(text.simplifiedCN.signupUnmatchedPW) : alert(text.traditionaldCN.signupUnmatchedPW)
     } else {
       addUser(user);
     }
@@ -60,7 +59,7 @@ function SignUp({language}) {
 
   return (
     <>
-      <h1>Create New User</h1>
+      <h1>{language === "English" ? text.en.signupNewUser : language === "简体中文" ? text.simplifiedCN.signupNewUser : text.traditionaldCN.signupNewUser}</h1>
       <form onSubmit={handleSubmit}>
             <label>Name:</label>
             <input
