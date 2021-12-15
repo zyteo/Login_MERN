@@ -22,6 +22,7 @@ function App() {
     setAuth("NoAuth");
     setRole("User");
     setUsername("");
+    window.localStorage.removeItem("token");
     navigate(`/`);
   };
 
@@ -58,15 +59,11 @@ function App() {
               userName={userName}
               name={name}
               role={role}
+              auth={auth}
             />
           }
         />
 
-        {/* <Route path="/cats/:id"element={auth === "Auth" ? (
-              <AuthCatShow userName={userName} role={role} />
-            ) : (
-              <CatShow />
-            )}/> */}
       </Routes>
     </div>
   );

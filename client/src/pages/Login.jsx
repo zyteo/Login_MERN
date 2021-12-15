@@ -7,7 +7,7 @@ function Login({ setAuth, setRole, setUsername, setName, language }) {
   const [login, setLogin] = useState({});
   const navigate = useNavigate();
 
-  const handleUsernameChange = (event) => {
+   const handleUsernameChange = (event) => {
     const value = event.target.value;
     setLogin({ ...login, username: value });
   };
@@ -26,6 +26,7 @@ function Login({ setAuth, setRole, setUsername, setName, language }) {
           setAuth("Auth");
           setUsername(res.data.username);
           setName(res.data.name);
+          sessionStorage.setItem('token', res.data.token);
           if (res.data.role === "Manager") {
             setRole("Manager");
           }
