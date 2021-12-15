@@ -17,6 +17,9 @@ export const text = {
     signup: "Sign up",
     logout: "Logout",
     greet: "Hello",
+    loginFail: "Sorry, login failed! If you do not have an account, please sign up for one.",
+    role: "Role:",
+    link: "Restricted webpage",
   },
   
   简体中文: {
@@ -37,6 +40,9 @@ export const text = {
     signup: "注册",
     logout: "注销",
     greet: "你好",
+    loginFail: "对不起,登录失败!如果没帐户，请注册一个。",
+    role: "角色:",
+    link: "限制的网页",
   },
   繁体中文: {
     welcome: "歡迎！",
@@ -56,5 +62,8 @@ export const text = {
     signup: "註冊",
     logout: "註銷",
     greet: "你好",
+    loginFail: "對不起,登錄失敗!如果沒帳戶，請註冊一個。",
+    role: "角色:",
+    link: "限制的網頁",
   },
 };

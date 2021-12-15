@@ -12,8 +12,9 @@ function App() {
   const [auth, setAuth] = useState("NoAuth");
   const [role, setRole] = useState("User");
   const [userName, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [language, setLanguage] = useState("English");
-  
+
   const navigate = useNavigate();
   // handle function for logging out, passed as props to navbar
   const handleLogOut = async () => {
@@ -22,23 +23,24 @@ function App() {
     setRole("User");
     setUsername("");
     navigate(`/`);
-  }
+  };
 
   return (
     <div className="App">
       <NavBar
-          auth={auth}
-          handleLogOut={handleLogOut}
-          userName={userName}
-          setLanguage={setLanguage}
-          language={language}
-        />
+        auth={auth}
+        handleLogOut={handleLogOut}
+        userName={userName}
+        setLanguage={setLanguage}
+        language={language}
+      />
       <Routes>
         <Route
           exact
           path="/"
           element={
             <Login
+              setName={setName}
               setAuth={setAuth}
               setRole={setRole}
               setUsername={setUsername}
@@ -47,8 +49,18 @@ function App() {
           }
         />
 
-        <Route path="/signup" element={<SignUp language={language}/>} />
-        <Route path="/welcome" element={<Welcome language={language} />} />
+        <Route path="/signup" element={<SignUp language={language} />} />
+        <Route
+          path="/welcome"
+          element={
+            <Welcome
+              language={language}
+              userName={userName}
+              name={name}
+              role={role}
+            />
+          }
+        />
 
         {/* <Route path="/cats/:id"element={auth === "Auth" ? (
               <AuthCatShow userName={userName} role={role} />

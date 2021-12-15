@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { text } from "../localisation/text";
 
-function Login({ setAuth, setRole, setUsername, language }) {
+function Login({ setAuth, setRole, setUsername, setName, language }) {
   const [login, setLogin] = useState({});
   const navigate = useNavigate();
 
@@ -25,6 +25,7 @@ function Login({ setAuth, setRole, setUsername, language }) {
         if (res.data.success === true) {
           setAuth("Auth");
           setUsername(res.data.username);
+          setName(res.data.name);
           if (res.data.role === "Manager") {
             setRole("Manager");
           }
@@ -33,12 +34,9 @@ function Login({ setAuth, setRole, setUsername, language }) {
       })
       .catch((err) => {
         console.log("err", err);
-        alert(
-          `Sorry, login failed! If you do not have an account, please sign up for one.`
-        );
+        alert(text[language].loginFail);
       });
   };
-
 
   return (
     <>
@@ -61,7 +59,7 @@ function Login({ setAuth, setRole, setUsername, language }) {
               required
             ></input><br/>
               
-        <button onClick={handleSubmit}>{text[language].login}</button>
+        <button>{text[language].login}</button>
       </form>
     </>
   );

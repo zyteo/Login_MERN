@@ -107,7 +107,6 @@ function NavBar({ setLanguage, language, auth, handleLogOut, userName }) {
         ) : (
           <>
             <p>
-              {" "}
               {text[language].greet} {userName}!
             </p>
             <LinkStyled to="/" className="logout">
