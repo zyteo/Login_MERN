@@ -1,9 +1,9 @@
-import './App.css';
+import "./App.css";
 import axios from "axios";
 import React, { useState } from "react";
-import SignUp from './pages/Signup';
+import SignUp from "./pages/Signup";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import Login from './pages/Login';
+import Login from "./pages/Login";
 
 function App() {
   const [auth, setAuth] = useState("NoAuth");
@@ -21,20 +21,27 @@ function App() {
 
   return (
     <div className="App">
-        
-        <Routes>
-          <Route exact path="/" element={<Login />}/>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Login
+              setAuth={setAuth}
+              setRole={setRole}
+              setUsername={setUsername}
+            />
+          }
+        />
 
-          <Route path="/signup" element={<SignUp />}/>
-           
-          {/* <Route path="/cats/:id"element={auth === "Auth" ? (
+        <Route path="/signup" element={<SignUp />} />
+
+        {/* <Route path="/cats/:id"element={auth === "Auth" ? (
               <AuthCatShow userName={userName} role={role} />
             ) : (
               <CatShow />
             )}/> */}
-            
-            
-        </Routes>
+      </Routes>
     </div>
   );
 }

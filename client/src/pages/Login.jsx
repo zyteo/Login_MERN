@@ -2,76 +2,52 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Login() {
-  const [user, setUser] = useState({});
+function Login({ setAuth, setRole, setUsername }) {
+  const [login, setLogin] = useState({});
   const navigate = useNavigate();
-
-  const addUser = async (user) => {
-    await axios
-      .post(`/api/signup`, user)
-      .then((res) => {
-        alert(`New user ${user.username} created successfully!`);
-        // navigate("/login");
-      })
-      .catch((err) => {
-        if (err.response.data.message === "username exists") {
-          alert(`Sorry, username is already taken!`);
-        } else if (err.response.data.message === "name exists") {
-          alert(`Sorry, name is already taken!`);
-        } else {
-          alert(`Sorry, there was an error somehow. Try again?`);
-        }
-      });
-  };
-
-  const handleNameChange = (event) => {
-    const value = event.target.value;
-    setUser({ ...user, name: value });
-  };
 
   const handleUsernameChange = (event) => {
     const value = event.target.value;
-    setUser({ ...user, username: value });
+    setLogin({ ...login, username: value });
   };
 
   const handlePasswordChange = (event) => {
     const value = event.target.value;
-    setUser({ ...user, password: value });
+    setLogin({ ...login, password: value });
   };
 
-  const handleConfirmPasswordChange = (event) => {
-    const value = event.target.value;
-    setUser({ ...user, confirmPassword: value });
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (user.password.length < 6) {
-      alert("Password must be at least 6 characters long!");
-    } else if (user.confirmPassword !== user.password) {
-      alert("Passwords do not match!");
-    } else {
-      addUser(user);
-    }
+    await axios
+      .post(`/api/login`, login)
+      .then((res) => {
+        if (res.data.success === true) {
+          setAuth("Auth");
+          setUsername(res.data.username);
+          if (res.data.role === "Manager") {
+            setRole("Manager");
+          }
+          // navigate(`/`);
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+        alert(
+          `Sorry, login failed! If you do not have an account, please sign up for one.`
+        );
+      });
   };
+
 
   return (
     <>
-      <h1>Create New User</h1>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-            <label>Name:</label>
-            <input
-              type="email"
-              name="email"
-              value={user.name}
-              onChange={handleNameChange}
-              required
-              ></input>
-              <label>Username:</label>
+            <label>Username:</label>
             <input
               type="text"
               name="username"
-              value={user.username}
+              value={login.username}
               onChange={handleUsernameChange}
               required
               ></input>
@@ -79,19 +55,12 @@ function Login() {
             <input
               type="password"
               name="password"
-              value={user.password}
+              value={login.password}
               onChange={handlePasswordChange}
               required
             ></input>
-              <label>Confirm Password:</label>
-            <input
-              type="password"
-              name="confirm.password"
-              value={user.confirmPassword}
-              onChange={handleConfirmPasswordChange}
-              required
-            ></input>
-        <button>Create User</button>
+              
+        <button onClick={handleSubmit}>Login</button>
       </form>
     </>
   );

@@ -6,16 +6,16 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 // for comparing password
 const bcrypt = require("bcrypt");
-
-// Create all Auth operations
-// status errors refer: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+// token for JWT
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.SECRET, {
     expiresIn: process.env.JWT_maxAge,
   });
 };
+
+// Create all Auth operations
+// status errors refer: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 // Creating user (signup)
-// For creating user
 const createUser = async (req, res) => {
   // if there is no req.body, return error
   if (!req.body) {
@@ -64,7 +64,7 @@ const createUser = async (req, res) => {
       
       // success!
       // send back cookie with JWT too
-      res.cookie('jwt', token, { httpOnly: true, maxAge: process.env.maxAge});
+      res.cookie('jwt', token, { httpOnly: true, maxAge: process.env.maxAge, secure: true});
       res.status(201).json({
         success: true,
         user: user._id,
@@ -110,7 +110,7 @@ const getSession = async (req, res) => {
 };
 
 // For creating new session
-const createSession = async (req, res) => {
+const loginSession = async (req, res) => {
   // if there is no req.body, return error
   if (!req.body) {
     return res.status(400).json({
@@ -127,14 +127,13 @@ const createSession = async (req, res) => {
     }
     // user exists. Check if passwords match.
     if (bcrypt.compareSync(req.body.password, user.password)) {
-      console.log("session", req.session);
-      req.session.currentUser = user;
-      console.log("session user", req.session.currentUser);
+
       // success!
       res.status(201).json({
         success: true,
         role: user.role,
         username: user.username,
+        name: user.name,
         message: "Login success!",
       });
     } else {
@@ -169,6 +168,6 @@ module.exports = {
   createUser,
   deleteUser,
   getSession,
-  createSession,
+  loginSession,
   deleteSession,
 };
