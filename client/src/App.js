@@ -1,23 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
+import React, { useState } from "react";
+import SignUp from './pages/Signup';
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Login from './pages/Login';
 
 function App() {
+  const [auth, setAuth] = useState("NoAuth");
+  const [role, setRole] = useState("User");
+  const [userName, setUsername] = useState("");
+  const navigate = useNavigate();
+  // handle function for logging out, passed as props to navbar
+  const handleLogOut = async (event) => {
+    await axios.delete(`/api/login`);
+    setAuth("NoAuth");
+    setRole("Guest");
+    setUsername("");
+    navigate(`/`);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        
+        <Routes>
+          <Route exact path="/" element={<Login />}/>
+
+          <Route path="/signup" element={<SignUp />}/>
+           
+          {/* <Route path="/cats/:id"element={auth === "Auth" ? (
+              <AuthCatShow userName={userName} role={role} />
+            ) : (
+              <CatShow />
+            )}/> */}
+            
+            
+        </Routes>
     </div>
   );
 }
