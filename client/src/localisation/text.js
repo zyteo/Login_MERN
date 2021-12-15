@@ -7,6 +7,11 @@ export const text = {
     signupShortPW: "Password must be at least 6 characters long!",
     signupUnmatchedPW: "Passwords do not match!",
     signupNewUser: "Create New User",
+    name: "Name:",
+    username: "Username:",
+    password: "Password:",
+    confirmPassword: "Confirm Password:",
+    signupCreate: "Create User",
   },
   
   simplifiedCN: {
@@ -17,6 +22,11 @@ export const text = {
     signupShortPW: "密码必须至少6个字符!",
     signupUnmatchedPW: "密码不匹配!",
     signupNewUser: "创建新用户",
+    name: "名字:",
+    username: "用户名:",
+    password: "密码:",
+    confirmPassword: "确认密码:",
+    signupCreate: "创建用户",
   },
   traditionaldCN: {
     welcome: "歡迎！",
@@ -26,5 +36,10 @@ export const text = {
     signupShortPW: "密碼必須至少6個字符! ",
     signupUnmatchedPW: "密碼不匹配!",
     signupNewUser: "創建新用戶",
+    name: "名字:",
+    username: "用戶名:",
+    password: "密碼:",
+    confirmPassword: "確認密碼:",
+    signupCreate: "創建用戶",
   },
 };
