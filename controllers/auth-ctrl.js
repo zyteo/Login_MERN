@@ -2,12 +2,18 @@
 //              DATABASE
 // =======================================
 const User = require("../models/users");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 // for comparing password
 const bcrypt = require("bcrypt");
 
 // Create all Auth operations
 // status errors refer: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-
+const createToken = (id) => {
+  return jwt.sign({ id }, process.env.SECRET, {
+    expiresIn: process.env.JWT_maxAge,
+  });
+};
 // Creating user (signup)
 // For creating user
 const createUser = async (req, res) => {
@@ -27,7 +33,7 @@ const createUser = async (req, res) => {
     });
     // find the email
     const checkName = await User.findOne({
-      email: req.body.name,
+      name: req.body.name,
     });
 
     if (checkUsername !== null) {
@@ -48,16 +54,20 @@ const createUser = async (req, res) => {
       req.body.role = "User";
       const user = new User(req.body);
       await user.save();
-
+      // create JWT
+      const token = createToken(user._id);
+      
       // somehow, if the new user doesn't exist, return error
       if (!user) {
         return res.status(400).json({ success: false, error: err });
       }
-
+      
       // success!
+      // send back cookie with JWT too
+      res.cookie('jwt', token, { httpOnly: true, maxAge: process.env.maxAge});
       res.status(201).json({
         success: true,
-        id: user._id,
+        user: user._id,
         message: "User created!",
       });
     }
@@ -90,7 +100,9 @@ const getSession = async (req, res) => {
   const sessionUser = await req.session.currentUser;
   try {
     if (sessionUser) {
-      res.status(200).json({ success: true, message: "Authenticated!", data: sessionUser });
+      res
+        .status(200)
+        .json({ success: true, message: "Authenticated!", data: sessionUser });
     }
   } catch (err) {
     res.status(401).json({ success: false, error: err });
@@ -114,10 +126,10 @@ const createSession = async (req, res) => {
       return res.status(400).json({ success: false, error: err });
     }
     // user exists. Check if passwords match.
-    if ( bcrypt.compareSync(req.body.password, user.password)) {
-      console.log("session", req.session)
+    if (bcrypt.compareSync(req.body.password, user.password)) {
+      console.log("session", req.session);
       req.session.currentUser = user;
-      console.log("session user", req.session.currentUser)
+      console.log("session user", req.session.currentUser);
       // success!
       res.status(201).json({
         success: true,

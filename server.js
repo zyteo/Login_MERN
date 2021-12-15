@@ -6,7 +6,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const authRouter = require("./controllers/auth-router");
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 // const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 const PORT = process.env.PORT ?? 8000;
 
@@ -17,7 +17,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api", authRouter);
-// app.use(cookieParser());
+app.use(cookieParser());
 
 
 // =======================================
