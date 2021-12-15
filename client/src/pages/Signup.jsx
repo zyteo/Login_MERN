@@ -68,7 +68,7 @@ function SignUp({language}) {
               value={user.name}
               onChange={handleNameChange}
               required
-              ></input>
+              ></input><br/>
               <label>{text[language].username}</label>
             <input
               type="text"
@@ -76,7 +76,7 @@ function SignUp({language}) {
               value={user.username}
               onChange={handleUsernameChange}
               required
-              ></input>
+              ></input><br/>
               <label>{text[language].password}</label>
             <input
               type="password"
@@ -84,7 +84,7 @@ function SignUp({language}) {
               value={user.password}
               onChange={handlePasswordChange}
               required
-            ></input>
+            ></input><br/>
               <label>{text[language].confirmPassword}</label>
             <input
               type="password"
@@ -92,7 +92,7 @@ function SignUp({language}) {
               value={user.confirmPassword}
               onChange={handleConfirmPasswordChange}
               required
-            ></input>
+            ></input><br/>
         <button>{text[language].signupCreate}</button>
       </form>
     </>

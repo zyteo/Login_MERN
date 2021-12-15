@@ -50,7 +50,7 @@ function Login({ setAuth, setRole, setUsername, language }) {
               value={login.username}
               onChange={handleUsernameChange}
               required
-              ></input>
+              ></input><br/>
               <label>Password:</label>
             <input
               type="password"
@@ -58,7 +58,7 @@ function Login({ setAuth, setRole, setUsername, language }) {
               value={login.password}
               onChange={handlePasswordChange}
               required
-            ></input>
+            ></input><br/>
               
         <button onClick={handleSubmit}>Login</button>
       </form>

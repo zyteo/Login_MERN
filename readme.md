@@ -1,6 +1,9 @@
-# Login - MERN with JWT
+# Login - MERN with JWT + localisation
 
 Coding challenge - making a login application.
+
+I see this as a chance to practice my full stack development skills, and at the same time try out JSON Web Tokens (JWT) as I did not have the chance to do so.
+At the same time, I would implement localisation and support multiple languages. This is also my first time trying out localisation.
 
 ### Technology Used
 
@@ -12,6 +15,9 @@ Technologies used to build this project.
 - ReactJS
 - NodeJS
 - Styled components
+- bcrypt
+- JWT
+- mongoose
 
 ```
 
@@ -25,7 +31,7 @@ To use the app, user should:
 - See a welcome screen (name,username,role)
 - If user's role is manager, they can see another webpage in welcome screen
 - Logout button to link back to login screen
-- Localisation included - 2 languages
+- Localisation included - supports multiple languages
 
 ```
 
@@ -60,6 +66,8 @@ Decided to try out a login application with MERN first before moving on to Java.
 
 - 15 Dec: Plan out the application.
 Set up backend models, controllers, routes.
+Set up frontend, add various states.
+Experiment around with JWT + localisation.
 
 ```
 ---
