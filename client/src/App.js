@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import SignUp from "./pages/Signup";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
+import Welcome from "./pages/Welcome";
+import NavBar from "./pages/NavBar";
 
 function App() {
   const [auth, setAuth] = useState("NoAuth");
@@ -21,6 +23,11 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar
+          auth={auth}
+          handleLogOut={handleLogOut}
+          userName={userName}
+        />
       <Routes>
         <Route
           exact
@@ -35,6 +42,7 @@ function App() {
         />
 
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/welcome" element={<Welcome />} />
 
         {/* <Route path="/cats/:id"element={auth === "Auth" ? (
               <AuthCatShow userName={userName} role={role} />

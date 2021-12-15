@@ -103,14 +103,14 @@ const getSession = async (req, res) => {
       res
         .status(200)
         .json({ success: true, message: "Authenticated!", data: sessionUser });
-    }
-  } catch (err) {
+      }
+    } catch (err) {
     res.status(401).json({ success: false, error: err });
   }
 };
 
 // For creating new session
-const loginSession = async (req, res) => {
+const loginUser = async (req, res) => {
   // if there is no req.body, return error
   if (!req.body) {
     return res.status(400).json({
@@ -129,6 +129,8 @@ const loginSession = async (req, res) => {
     if (bcrypt.compareSync(req.body.password, user.password)) {
 
       // success!
+      const token = createToken(user._id);
+      res.cookie('jwt', token, { httpOnly: true, maxAge: process.env.maxAge, secure: true});
       res.status(201).json({
         success: true,
         role: user.role,
@@ -162,12 +164,13 @@ const deleteSession = async (req, res) => {
   }
 };
 
+
 // export the modules - CRUD
 // Read has 2 (for the index page--> showing all sessions, and for the show page--> show particular session)
 module.exports = {
   createUser,
   deleteUser,
   getSession,
-  loginSession,
+  loginUser,
   deleteSession,
 };

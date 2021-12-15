@@ -18,7 +18,7 @@ const AuthCtrl = require("./auth-ctrl");
 // This is for creating new account
 router.post("/signup", AuthCtrl.createUser);
 // This is for authenticating a current user
-router.post("/login", AuthCtrl.loginSession);
+router.post("/login", AuthCtrl.loginUser);
 
 // =======================================
 //              DELETE ROUTES
