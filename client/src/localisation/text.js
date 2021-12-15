@@ -12,6 +12,10 @@ export const text = {
     password: "Password:",
     confirmPassword: "Confirm Password:",
     signupCreate: "Create User",
+    login: "Login",
+    signup: "Sign up",
+    logout: "Logout",
+    greet: "Hello",
   },
   
   simplifiedCN: {
@@ -27,6 +31,10 @@ export const text = {
     password: "密码:",
     confirmPassword: "确认密码:",
     signupCreate: "创建用户",
+    login: "登录",
+    signup: "注册",
+    logout: "注销",
+    greet: "你好",
   },
   traditionaldCN: {
     welcome: "歡迎！",
@@ -41,5 +49,9 @@ export const text = {
     password: "密碼:",
     confirmPassword: "確認密碼:",
     signupCreate: "創建用戶",
+    login: "登錄",
+    signup: "註冊",
+    logout: "註銷",
+    greet: "你好",
   },
 };

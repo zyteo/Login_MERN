@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { text } from "../localisation/text";
 
 const Navbar = styled.nav`
   display: flex;
@@ -96,18 +97,18 @@ function NavBar({ setLanguage, language, auth, handleLogOut, userName }) {
         {auth === "NoAuth" ? (
           <>
             <LinkStyled to="/signup" className="signup">
-              <Li>Sign up</Li>
+              <Li>{language === "English" ? text.en.signup : language === "简体中文" ? text.simplifiedCN.signup : text.traditionaldCN.signup}</Li>
             </LinkStyled>
             <LinkStyled to="/" className="login">
-              <Button primary>Login</Button>
+              <Button primary>{language === "English" ? text.en.login : language === "简体中文" ? text.simplifiedCN.login : text.traditionaldCN.login}</Button>
             </LinkStyled>
           </>
         ) : (
           <>
-            <p> Hello {userName}!</p>
+            <p> {language === "English" ? text.en.greet : language === "简体中文" ? text.simplifiedCN.greet : text.traditionaldCN.greet} {userName}!</p>
             <LinkStyled to="/" className="logout">
               <Button primary onClick={handleLogOut}>
-                Logout
+              {language === "English" ? text.en.logout : language === "简体中文" ? text.simplifiedCN.logout : text.traditionaldCN.logout}
               </Button>
             </LinkStyled>
           </>
