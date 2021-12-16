@@ -97,9 +97,9 @@ const loginUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ username: req.body.username });
-    // somehow, if the new user doesn't exist, return error
+    // if the user doesn't exist, return error
     if (!user) {
-      return res.status(400).json({ success: false, error: err });
+      return res.status(400).json({ success: false, error: err, message: "User doesn't exist" });
     }
     // user exists. Check if passwords match.
     if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -127,7 +127,7 @@ const loginUser = async (req, res) => {
 
     } else {
       // wrong login information
-      res.status(401).json({ success: false, error: err });
+      res.status(401).json({ success: false, error: err, message: "Wrong login information" });
     }
   } catch (err) {
     res.status(400).json({

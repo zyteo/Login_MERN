@@ -7,8 +7,12 @@ function Welcome({ language, userName, name, role, auth }) {
 
   // only authenticated users can access welcome page
   useEffect(()=> {
+    let token = localStorage.getItem("token");
     if (auth !== "Auth"){
       navigate("/");
+    }
+    else if (token){
+      console.log(token)
     }
   },[])
 

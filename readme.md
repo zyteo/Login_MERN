@@ -69,6 +69,8 @@ Set up frontend, add various states.
 Experiment around with JWT + localisation.
 Got the set up done.
 
+- 16 Dec: Refine authentication.
+
 ```
 ---
 
@@ -76,4 +78,6 @@ Got the set up done.
 
 Had to do some research to better understand the topic and here are some websites I visited:
 
-Auth with JWT https://www.youtube.com/watch?v=SnoAwLP1a-0&list=PL4cUxeGkcC9iqqESP8335DA5cRFp8loyp&ab_channel=TheNetNinja
+Auth with JWT https://www.youtube.com/watch?v=SnoAwLP1a-0&list=PL4cUxeGkcC9iqqESP8335DA5cRFp8loyp&ab_channel=TheNetNinja  
+MERN + JWT https://www.youtube.com/watch?v=Ejg7es3ba2k&ab_channel=codedamn  
+registration with JWT https://www.youtube.com/watch?v=b9WlsQMGWMQ&ab_channel=PedroTech  
