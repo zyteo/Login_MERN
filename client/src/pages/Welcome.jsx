@@ -1,10 +1,11 @@
-// import jwt from "jsonwebtoken";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { text } from "../localisation/text";
+import jwt_decode from "jwt-decode";
 
-function Welcome({ language, userName, name, role, auth }) {
+function Welcome({ language, auth }) {
   const navigate = useNavigate();
+  const [userDetails, setUserDetails] = useState("");
 
   // only authenticated users can access welcome page
   useEffect(()=> {
@@ -13,9 +14,8 @@ function Welcome({ language, userName, name, role, auth }) {
       navigate("/");
     }
     else if (token){
-      // let decoded = jwt.verify(token, process.env.REACT_SECRET);
-      // console.log("d ",decoded);
-
+      let tokenInfo = jwt_decode(token);
+      setUserDetails(tokenInfo);
     }
   },[])
 
@@ -28,15 +28,15 @@ function Welcome({ language, userName, name, role, auth }) {
     <>
       <h1>{text[language].welcome}</h1>
       <h1>
-        {text[language].username} {userName}
+        {text[language].username} {userDetails?.username}
       </h1>
       <h1>
-        {text[language].name} {name}
+        {text[language].name} {userDetails?.name}
       </h1>
       <h1>
-        {text[language].role} {role}
+        {text[language].role} {userDetails?.role}
       </h1>
-      {role === "Manager" ? (
+      {userDetails?.role === "Manager" ? (
         <button onClick={() => handleLink()}>{text[language].link}</button>
       ) : (
         <></>

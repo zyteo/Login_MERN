@@ -56,9 +56,6 @@ function App() {
           element={
             <Welcome
               language={language}
-              userName={userName}
-              name={name}
-              role={role}
               auth={auth}
             />
           }

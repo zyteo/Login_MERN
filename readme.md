@@ -70,7 +70,9 @@ Experiment around with JWT + localisation.
 Got the set up done.
 
 - 16 Dec: Refine authentication.
-Read up more about localstorage. Made use of set, get and remove item for local storage.
+Read up more about localstorage. 
+Made use of set, get and remove item for local storage.
+Done with login app.
 
 ```
 ---
@@ -83,3 +85,4 @@ Auth with JWT https://www.youtube.com/watch?v=SnoAwLP1a-0&list=PL4cUxeGkcC9iqqES
 MERN + JWT https://www.youtube.com/watch?v=Ejg7es3ba2k&ab_channel=codedamn  
 Registration with JWT https://www.youtube.com/watch?v=b9WlsQMGWMQ&ab_channel=PedroTech  
 Localstorage https://blog.logrocket.com/mern-app-jwt-authentication-part-4/  
+Webpack https://webpack.js.org/configuration/resolve/  
