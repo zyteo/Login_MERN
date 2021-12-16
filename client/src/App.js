@@ -22,7 +22,7 @@ function App() {
     setAuth("NoAuth");
     setRole("User");
     setUsername("");
-    window.localStorage.removeItem("token");
+    localStorage.removeItem("token");
     navigate(`/`);
   };
 

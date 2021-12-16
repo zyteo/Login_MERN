@@ -1,3 +1,4 @@
+// import jwt from "jsonwebtoken";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { text } from "../localisation/text";
@@ -8,11 +9,13 @@ function Welcome({ language, userName, name, role, auth }) {
   // only authenticated users can access welcome page
   useEffect(()=> {
     let token = localStorage.getItem("token");
-    if (auth !== "Auth"){
+    if (auth !== "Auth" || (!token)){
       navigate("/");
     }
     else if (token){
-      console.log(token)
+      // let decoded = jwt.verify(token, process.env.REACT_SECRET);
+      // console.log("d ",decoded);
+
     }
   },[])
 

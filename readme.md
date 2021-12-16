@@ -70,6 +70,7 @@ Experiment around with JWT + localisation.
 Got the set up done.
 
 - 16 Dec: Refine authentication.
+Read up more about localstorage. Made use of set, get and remove item for local storage.
 
 ```
 ---
@@ -80,4 +81,5 @@ Had to do some research to better understand the topic and here are some website
 
 Auth with JWT https://www.youtube.com/watch?v=SnoAwLP1a-0&list=PL4cUxeGkcC9iqqESP8335DA5cRFp8loyp&ab_channel=TheNetNinja  
 MERN + JWT https://www.youtube.com/watch?v=Ejg7es3ba2k&ab_channel=codedamn  
-registration with JWT https://www.youtube.com/watch?v=b9WlsQMGWMQ&ab_channel=PedroTech  
+Registration with JWT https://www.youtube.com/watch?v=b9WlsQMGWMQ&ab_channel=PedroTech  
+Localstorage https://blog.logrocket.com/mern-app-jwt-authentication-part-4/  
