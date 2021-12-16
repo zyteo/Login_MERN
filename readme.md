@@ -7,6 +7,16 @@ At the same time, I would implement localisation and support multiple languages.
 
 Visit the app here: https://login-mern-jwt.herokuapp.com/
 
+Accounts for user to test:
+
+Account 1 (User)
+username: normalusername
+password: normalusername
+
+Account 2 (Manager)
+username: specialusername
+password: specialusername
+
 ### Technology Used
 
 Technologies used to build this project.
