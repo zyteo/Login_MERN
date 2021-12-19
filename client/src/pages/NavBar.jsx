@@ -82,7 +82,7 @@ const Button = styled.button`
   @media only screen and (max-width: 400px) {
     font-size: 8px;
   }
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 300px) {
     font-size: 6px;
   }
   `;
